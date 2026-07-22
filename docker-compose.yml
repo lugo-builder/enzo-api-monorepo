@@ -1,0 +1,32 @@
+# MySQL local para desarrollo. Uso: docker compose up -d
+# La app se conecta con DATABASE_URL en .env (mysql://root:local_password@localhost:3306/enzo_db)
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: enzo-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: local_password
+      MYSQL_DATABASE: enzo_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-plocal_password",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql_data:

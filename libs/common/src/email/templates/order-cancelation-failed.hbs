@@ -1,0 +1,35 @@
+{{#> base-layout title="Fallo en cancelación de orden"}}
+  <tr>
+    <td>
+      <div style="font-family: Arial, sans-serif; padding: 20px;">
+        <h3 style="font-size: 18px; color: #FF0000;">⚠️ Error: No fue posible cancelar la orden en Next</h3>
+        <p style="font-size: 16px;">Se intentó cancelar una orden en Next ERP pero la operación falló.</p>
+
+        <div style="margin-top: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
+          <h3 style="font-size: 16px; margin-bottom: 10px;">Detalles de la orden:</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 8px; font-weight: bold; width: 200px;">ID de orden (eComm):</td>
+              <td style="padding: 8px;">{{orderId}}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; font-weight: bold;">ID de orden (Yuju):</td>
+              <td style="padding: 8px;">{{ecommerceOrderId}}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; font-weight: bold;">Folio Next:</td>
+              <td style="padding: 8px;">{{folioNext}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="margin-top: 20px; background-color: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107;">
+          <h3 style="font-size: 16px; margin-bottom: 10px; color: #856404;">Razón del fallo:</h3>
+          <p style="font-size: 14px; color: #856404; margin: 0;">{{errorReason}}</p>
+        </div>
+
+        <p style="font-size: 16px; margin-top: 20px;">Por favor, revise la orden en el sistema Next y en eComm para tomar las acciones necesarias.</p>
+      </div>
+    </td>
+  </tr>
+{{/base-layout}}

@@ -1,0 +1,56 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo "DATABASE_URL=$DATABASE_URL"
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - echo "Logging in to Amazon ECR..."
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 841162688523.dkr.ecr.us-west-2.amazonaws.com
+  build:
+    commands:
+      - echo "DATABASE_URL=$DATABASE_URL" > .env
+      - echo "MERCADO_LIBRE_CLIENT_ID=$MERCADO_LIBRE_CLIENT_ID" >> .env
+      - echo "MERCADO_LIBRE_CLIENT_SECRET=$MERCADO_LIBRE_CLIENT_SECRET" >> .env
+      - echo "FRONTEND_ADMIN_URL=$FRONTEND_ADMIN_URL" >> .env
+      - echo "FRONTEND_URL=$FRONTEND_URL" >> .env
+      - echo "AWS_ACCESS_KEY_ID_SES=$AWS_ACCESS_KEY_ID_SES" >> .env
+      - echo "AWS_SECRET_ACCESS_KEY_SES=$AWS_SECRET_ACCESS_KEY_SES" >> .env
+      - echo "AMAZON_CLIENT_ID=$AMAZON_CLIENT_ID" >> .env
+      - echo "AMAZON_CLIENT_SECRET=$AMAZON_CLIENT_SECRET" >> .env
+      - echo "AMAZON_MARKETPLACE_ID=$AMAZON_MARKETPLACE_ID" >> .env
+      - echo "MKT_SYNC_ORDER_PROCESS_JOB_QUEUE_URL=$MKT_SYNC_ORDER_PROCESS_JOB_QUEUE_URL" >> .env
+      - echo "MKT_SYNC_ITEM_PROCESS_JOB_QUEUE_URL=$MKT_SYNC_ITEM_PROCESS_JOB_QUEUE_URL" >> .env
+      - echo "ERP_SYNC_ITEM_PROCESS_JOB_QUEUE_URL=$ERP_SYNC_ITEM_PROCESS_JOB_QUEUE_URL" >> .env
+      - echo "ERP_YUJU_GUIDE_FETCH_JOB_QUEUE_URL=$ERP_YUJU_GUIDE_FETCH_JOB_QUEUE_URL" >> .env
+      - echo "LOG_GROUP_NAME=$LOG_GROUP_NAME" >> .env
+      - echo "ERP_INVENTORY_FACTOR=$ERP_INVENTORY_FACTOR" >> .env
+      - echo "API_REST_NEXT_CLOUD_URL=$API_REST_NEXT_CLOUD_URL" >> .env
+      - echo "NODE_ENV=$NODE_ENV" >> .env
+      - echo "AWS_REGION_SES=$AWS_REGION_SES" >> .env
+      - echo "INVENTORY_FILES=$INVENTORY_FILES" >> .env
+
+      - echo "YUJU_API_URL=$YUJU_API_URL" >> .env
+      - echo "YUJU_API_KEY=$YUJU_API_KEY" >> .env
+      - echo "YUJU_RATE_LIMIT_INTERVAL=$YUJU_RATE_LIMIT_INTERVAL" >> .env
+      - echo "YUJU_TIMEOUT_MS=$YUJU_TIMEOUT_MS" >> .env
+      - echo "YUJU_MAX_RETRIES=$YUJU_MAX_RETRIES" >> .env
+      - echo "YUJU_INITIAL_RETRY_DELAY=$YUJU_INITIAL_RETRY_DELAY" >> .env
+      - echo "YUJU_MAX_RETRY_DELAY=$YUJU_MAX_RETRY_DELAY" >> .env
+      - echo "YUJU_QUEUE_URL=$YUJU_QUEUE_URL" >> .env
+
+      - echo "Building Docker image..."
+      - docker build --no-cache -t marketplace-f360-sandbox:latest . -f pipeline-support/mkt/Dockerfile.sbx
+      - docker tag marketplace-f360-sandbox:latest 841162688523.dkr.ecr.us-west-2.amazonaws.com/marketplace-f360-sandbox:latest
+  post_build:
+    commands:
+      - cat .env
+      - echo "Pushing Docker image to Amazon ECR..."
+      - docker push 841162688523.dkr.ecr.us-west-2.amazonaws.com/marketplace-f360-sandbox:latest
+      - echo "Image pushed to ECR."
+      - printf '[{"name":"container-MKP-sandbox","imageUri":"841162688523.dkr.ecr.us-west-2.amazonaws.com/marketplace-f360-sandbox:latest"}]' > imageDetail.json
+
+      - cat imageDetail.json
+artifacts:
+  files:
+    - .env
+    - imageDetail.json

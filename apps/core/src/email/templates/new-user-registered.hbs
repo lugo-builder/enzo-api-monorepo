@@ -1,0 +1,19 @@
+{{#> base-layout title="Nuevo Usuario Registrado"}}
+  <tr>
+    <td>
+      <div class="content">
+        <h3>Nuevo Usuario Registrado</h3>
+        <p>Estimado administrador,</p>
+        <p>Un nuevo usuario se ha registrado en la plataforma.</p>
+        <p>Por favor, accede al administrador de usuarios para activar al usuario y asignarle los permisos
+          correspondientes.</p>
+        <a href="{{enlace_administracion}}" class="button">Ir al Administrador de Usuarios</a>
+        <p>Detalles del usuario:</p>
+        <ul style="text-align: left; margin: 0 auto; display: inline-block; text-align: left;">
+          <li><strong>Nombre:</strong> {{nombre_usuario}}</li>
+          <li><strong>Email:</strong> {{email_usuario}}</li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+{{/base-layout}}

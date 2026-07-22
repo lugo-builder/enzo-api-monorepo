@@ -1,0 +1,95 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/**
+ * ####### MODELS #######
+ */
+model User {
+  id                 String    @id @unique @default(uuid())
+  roleId             String
+  role               Rol       @relation(fields: [roleId], references: [id])
+  name               String?
+  email              String    @unique
+  emailVerified      Boolean   @default(false)
+  phone              String?
+  passwordRegistered String?
+  company            String?
+  password           String?
+  status             String    @default("INACTIVE")
+  createdAt          DateTime  @default(now())
+  createdBy          String?
+  updatedAt          DateTime? @updatedAt
+  updatedBy          String?
+  deletedAt          DateTime?
+  deletedBy          String?
+  deactivatedAt      DateTime?
+  userDetails        UserDetails?
+  @@map("user")
+}
+
+model UserDetails {
+  id                   String    @id @default(uuid())
+  userId               String    @unique
+  phone                String?
+  sendNotifications    Boolean   @default(false)
+  receiveNotifications Boolean   @default(false)
+  createdAt            DateTime?
+  updatedAt            DateTime? @updatedAt
+  user                 User      @relation(fields: [userId], references: [id])
+
+  @@map("user_details")
+}
+
+model Rol {
+  id            String          @id @default(uuid())
+  name          String          @unique
+  createdAt     DateTime        @default(now())
+  createdBy     String?
+  updatedAt     DateTime?       @updatedAt
+  updatedBy     String?
+  deletedAt     DateTime?
+  deletedBy     String?
+  User          User[]
+  RolPermission RolPermission[]
+
+  @@map("rol")
+}
+
+model Permission {
+  id            String          @id @default(uuid())
+  name          String
+  createdAt     DateTime        @default(now())
+  createdBy     String?
+  updatedAt     DateTime?       @updatedAt
+  updatedBy     String?
+  deletedAt     DateTime?
+  deletedBy     String?
+  rolPermission RolPermission[]
+
+  @@map("permission")
+}
+
+model RolPermission {
+  id           String     @default(uuid())
+  roleId       String
+  permissionId String
+  createdAt    DateTime   @default(now())
+  createdBy    String?
+  role         Rol        @relation(fields: [roleId], references: [id])
+  permission   Permission @relation(fields: [permissionId], references: [id])
+
+  @@unique([roleId, permissionId])
+  @@map("rol_permission")
+}
+
+enum Currency {
+  MXN
+  USD
+}
