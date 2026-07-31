@@ -1,0 +1,634 @@
+{
+  "readings": [
+    {
+      "unitNumber": "1",
+      "meterSerial": "19000193",
+      "previousReading": "50.00",
+      "currentReading": "51.00",
+      "consumptionM3": "1.00"
+    },
+    {
+      "unitNumber": "2",
+      "meterSerial": "19000199",
+      "previousReading": "441.00",
+      "currentReading": "446.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "3",
+      "meterSerial": "19006015",
+      "previousReading": "270.00",
+      "currentReading": "275.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "4",
+      "meterSerial": "19000198",
+      "previousReading": "567.00",
+      "currentReading": "570.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "5",
+      "meterSerial": "19000196",
+      "previousReading": "277.00",
+      "currentReading": "286.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "6",
+      "meterSerial": "19000200",
+      "previousReading": "278.00",
+      "currentReading": "285.00",
+      "consumptionM3": "7.00"
+    },
+    {
+      "unitNumber": "7",
+      "meterSerial": "1708233865",
+      "previousReading": "169.00",
+      "currentReading": "171.00",
+      "consumptionM3": "2.00"
+    },
+    {
+      "unitNumber": "8",
+      "meterSerial": "19000195",
+      "previousReading": "426.00",
+      "currentReading": "433.00",
+      "consumptionM3": "7.00"
+    },
+    {
+      "unitNumber": "9",
+      "meterSerial": "290202TB02",
+      "previousReading": "677.00",
+      "currentReading": "716.00",
+      "consumptionM3": "39.00"
+    },
+    {
+      "unitNumber": "10",
+      "meterSerial": "19000197",
+      "previousReading": "302.00",
+      "currentReading": "311.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "11",
+      "meterSerial": "315284",
+      "previousReading": "135.00",
+      "currentReading": "144.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "12",
+      "meterSerial": "19000194",
+      "previousReading": "236.00",
+      "currentReading": "242.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "13",
+      "meterSerial": "19000192",
+      "previousReading": "446.00",
+      "currentReading": "459.00",
+      "consumptionM3": "13.00"
+    },
+    {
+      "unitNumber": "14",
+      "meterSerial": "19000067",
+      "previousReading": "609.00",
+      "currentReading": "616.00",
+      "consumptionM3": "7.00"
+    },
+    {
+      "unitNumber": "15",
+      "meterSerial": "19000101",
+      "previousReading": "757.00",
+      "currentReading": "763.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "16",
+      "meterSerial": "1708233866",
+      "previousReading": "220.00",
+      "currentReading": "220.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "17",
+      "meterSerial": "19000121",
+      "previousReading": "390.00",
+      "currentReading": "393.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "18",
+      "meterSerial": "19000130",
+      "previousReading": "374.00",
+      "currentReading": "379.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "19",
+      "meterSerial": "19000245",
+      "previousReading": "280.00",
+      "currentReading": "283.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "20",
+      "meterSerial": "19000122",
+      "previousReading": "286.00",
+      "currentReading": "292.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "21",
+      "meterSerial": "19000129",
+      "previousReading": "404.00",
+      "currentReading": "409.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "22",
+      "meterSerial": "233867",
+      "previousReading": "336.00",
+      "currentReading": "352.00",
+      "consumptionM3": "16.00"
+    },
+    {
+      "unitNumber": "23",
+      "meterSerial": "19000127",
+      "previousReading": "135.00",
+      "currentReading": "156.00",
+      "consumptionM3": "21.00"
+    },
+    {
+      "unitNumber": "24",
+      "meterSerial": "19000125",
+      "previousReading": "397.00",
+      "currentReading": "406.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "25",
+      "meterSerial": "19000124",
+      "previousReading": "198.00",
+      "currentReading": "199.00",
+      "consumptionM3": "1.00"
+    },
+    {
+      "unitNumber": "26",
+      "meterSerial": "19000126",
+      "previousReading": "283.00",
+      "currentReading": "291.00",
+      "consumptionM3": "8.00"
+    },
+    {
+      "unitNumber": "27",
+      "meterSerial": "19000128",
+      "previousReading": "887.00",
+      "currentReading": "889.00",
+      "consumptionM3": "2.00"
+    },
+    {
+      "unitNumber": "28",
+      "meterSerial": "19000123",
+      "previousReading": "317.00",
+      "currentReading": "322.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "29",
+      "meterSerial": "19000111",
+      "previousReading": "229.00",
+      "currentReading": "230.00",
+      "consumptionM3": "1.00"
+    },
+    {
+      "unitNumber": "30",
+      "meterSerial": "19005899",
+      "previousReading": "137.00",
+      "currentReading": "137.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "31",
+      "meterSerial": "19000120",
+      "previousReading": "322.00",
+      "currentReading": "330.00",
+      "consumptionM3": "8.00"
+    },
+    {
+      "unitNumber": "32",
+      "meterSerial": "19000108",
+      "previousReading": "294.00",
+      "currentReading": "294.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "33",
+      "meterSerial": "19000112",
+      "previousReading": "204.00",
+      "currentReading": "204.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "34",
+      "meterSerial": "19000113",
+      "previousReading": "21.00",
+      "currentReading": "22.00",
+      "consumptionM3": "1.00"
+    },
+    {
+      "unitNumber": "35",
+      "meterSerial": "1708233862",
+      "previousReading": "354.00",
+      "currentReading": "360.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "36",
+      "meterSerial": "19000119",
+      "previousReading": "215.00",
+      "currentReading": "217.00",
+      "consumptionM3": "2.00"
+    },
+    {
+      "unitNumber": "37",
+      "meterSerial": "19000118",
+      "previousReading": "324.00",
+      "currentReading": "329.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "38",
+      "meterSerial": "19000215",
+      "previousReading": "408.00",
+      "currentReading": "414.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "39",
+      "meterSerial": "1708233860",
+      "previousReading": "368.00",
+      "currentReading": "377.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "40",
+      "meterSerial": "19000117",
+      "previousReading": "441.00",
+      "currentReading": "452.00",
+      "consumptionM3": "11.00"
+    },
+    {
+      "unitNumber": "41",
+      "meterSerial": "19000115",
+      "previousReading": "534.00",
+      "currentReading": "535.00",
+      "consumptionM3": "1.00"
+    },
+    {
+      "unitNumber": "42",
+      "meterSerial": "19000116",
+      "previousReading": "236.00",
+      "currentReading": "241.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "43",
+      "meterSerial": "19000114",
+      "previousReading": "286.00",
+      "currentReading": "288.00",
+      "consumptionM3": "2.00"
+    },
+    {
+      "unitNumber": "44",
+      "meterSerial": "19000216",
+      "previousReading": "262.00",
+      "currentReading": "265.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "45",
+      "meterSerial": "19000218",
+      "previousReading": "1043.00",
+      "currentReading": "1056.00",
+      "consumptionM3": "13.00"
+    },
+    {
+      "unitNumber": "46",
+      "meterSerial": "19000214",
+      "previousReading": "401.00",
+      "currentReading": "410.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "47",
+      "meterSerial": "19000212",
+      "previousReading": "364.00",
+      "currentReading": "367.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "48",
+      "meterSerial": "19000217",
+      "previousReading": "770.00",
+      "currentReading": "785.00",
+      "consumptionM3": "15.00"
+    },
+    {
+      "unitNumber": "49",
+      "meterSerial": "19000204",
+      "previousReading": "219.00",
+      "currentReading": "220.00",
+      "consumptionM3": "1.00"
+    },
+    {
+      "unitNumber": "50",
+      "meterSerial": "19000213",
+      "previousReading": "218.00",
+      "currentReading": "221.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "51",
+      "meterSerial": "233861",
+      "previousReading": "317.00",
+      "currentReading": "326.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "52",
+      "meterSerial": "19000220",
+      "previousReading": "358.00",
+      "currentReading": "362.00",
+      "consumptionM3": "4.00"
+    },
+    {
+      "unitNumber": "53",
+      "meterSerial": "19000211",
+      "previousReading": "381.00",
+      "currentReading": "393.00",
+      "consumptionM3": "12.00"
+    },
+    {
+      "unitNumber": "54",
+      "meterSerial": "19000219",
+      "previousReading": "258.00",
+      "currentReading": "262.00",
+      "consumptionM3": "4.00"
+    },
+    {
+      "unitNumber": "55",
+      "meterSerial": "19000095",
+      "previousReading": "371.00",
+      "currentReading": "386.00",
+      "consumptionM3": "15.00"
+    },
+    {
+      "unitNumber": "56",
+      "meterSerial": "19000183",
+      "previousReading": "12.00",
+      "currentReading": "12.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "57",
+      "meterSerial": "19000094",
+      "previousReading": "498.00",
+      "currentReading": "516.00",
+      "consumptionM3": "18.00"
+    },
+    {
+      "unitNumber": "58",
+      "meterSerial": "19000096",
+      "previousReading": "682.00",
+      "currentReading": "696.00",
+      "consumptionM3": "14.00"
+    },
+    {
+      "unitNumber": "59",
+      "meterSerial": "AA0273372",
+      "previousReading": "107.00",
+      "currentReading": "111.00",
+      "consumptionM3": "4.00"
+    },
+    {
+      "unitNumber": "60",
+      "meterSerial": "19000221",
+      "previousReading": "100.00",
+      "currentReading": "100.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "61",
+      "meterSerial": "19000097",
+      "previousReading": "455.00",
+      "currentReading": "459.00",
+      "consumptionM3": "4.00"
+    },
+    {
+      "unitNumber": "62",
+      "meterSerial": "19000093",
+      "previousReading": "316.00",
+      "currentReading": "316.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "63",
+      "meterSerial": "19000149",
+      "previousReading": "479.00",
+      "currentReading": "485.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "64",
+      "meterSerial": "19000099",
+      "previousReading": "425.00",
+      "currentReading": "429.00",
+      "consumptionM3": "4.00"
+    },
+    {
+      "unitNumber": "65",
+      "meterSerial": "19000092",
+      "previousReading": "488.00",
+      "currentReading": "504.00",
+      "consumptionM3": "16.00"
+    },
+    {
+      "unitNumber": "66",
+      "meterSerial": "19000098",
+      "previousReading": "344.00",
+      "currentReading": "354.00",
+      "consumptionM3": "10.00"
+    },
+    {
+      "unitNumber": "67",
+      "meterSerial": "19000091",
+      "previousReading": "553.00",
+      "currentReading": "556.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "68",
+      "meterSerial": "210240041",
+      "previousReading": "461.00",
+      "currentReading": "474.00",
+      "consumptionM3": "13.00"
+    },
+    {
+      "unitNumber": "69",
+      "meterSerial": "19000100",
+      "previousReading": "434.00",
+      "currentReading": "440.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "70",
+      "meterSerial": "19000230",
+      "previousReading": "738.00",
+      "currentReading": "749.00",
+      "consumptionM3": "11.00"
+    },
+    {
+      "unitNumber": "71",
+      "meterSerial": "19000229",
+      "previousReading": "321.00",
+      "currentReading": "339.00",
+      "consumptionM3": "18.00"
+    },
+    {
+      "unitNumber": "72",
+      "meterSerial": "19000223",
+      "previousReading": "431.00",
+      "currentReading": "435.00",
+      "consumptionM3": "4.00"
+    },
+    {
+      "unitNumber": "73",
+      "meterSerial": "19000104",
+      "previousReading": "378.00",
+      "currentReading": "384.00",
+      "consumptionM3": "6.00"
+    },
+    {
+      "unitNumber": "74",
+      "meterSerial": "1708233864",
+      "previousReading": "353.00",
+      "currentReading": "355.00",
+      "consumptionM3": "2.00"
+    },
+    {
+      "unitNumber": "75",
+      "meterSerial": "AA0273374",
+      "previousReading": "152.00",
+      "currentReading": "160.00",
+      "consumptionM3": "8.00"
+    },
+    {
+      "unitNumber": "76",
+      "meterSerial": "VAC90202TB02",
+      "previousReading": "0.00",
+      "currentReading": "0.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "77",
+      "meterSerial": "19000222",
+      "previousReading": "397.00",
+      "currentReading": "397.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "78",
+      "meterSerial": "19000228",
+      "previousReading": "402.00",
+      "currentReading": "407.00",
+      "consumptionM3": "5.00"
+    },
+    {
+      "unitNumber": "79",
+      "meterSerial": "VAC19000226",
+      "previousReading": "0.00",
+      "currentReading": "0.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "80",
+      "meterSerial": "19000224",
+      "previousReading": "167.00",
+      "currentReading": "171.00",
+      "consumptionM3": "4.00"
+    },
+    {
+      "unitNumber": "81",
+      "meterSerial": "19000227",
+      "previousReading": "321.00",
+      "currentReading": "329.00",
+      "consumptionM3": "8.00"
+    },
+    {
+      "unitNumber": "82",
+      "meterSerial": "19000185",
+      "previousReading": "429.00",
+      "currentReading": "429.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "83",
+      "meterSerial": "19000186",
+      "previousReading": "576.00",
+      "currentReading": "588.00",
+      "consumptionM3": "12.00"
+    },
+    {
+      "unitNumber": "84",
+      "meterSerial": "19000184",
+      "previousReading": "496.00",
+      "currentReading": "513.00",
+      "consumptionM3": "17.00"
+    },
+    {
+      "unitNumber": "85",
+      "meterSerial": "19000225",
+      "previousReading": "967.00",
+      "currentReading": "976.00",
+      "consumptionM3": "9.00"
+    },
+    {
+      "unitNumber": "86",
+      "meterSerial": "1708233863",
+      "previousReading": "326.00",
+      "currentReading": "329.00",
+      "consumptionM3": "3.00"
+    },
+    {
+      "unitNumber": "87",
+      "meterSerial": "19000187",
+      "previousReading": "507.00",
+      "currentReading": "521.00",
+      "consumptionM3": "14.00"
+    },
+    {
+      "unitNumber": "88",
+      "meterSerial": "19007827",
+      "previousReading": "186.00",
+      "currentReading": "186.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "89",
+      "meterSerial": "16012717",
+      "previousReading": "232.00",
+      "currentReading": "232.00",
+      "consumptionM3": "0.00"
+    },
+    {
+      "unitNumber": "90",
+      "meterSerial": "19000208",
+      "previousReading": "384.00",
+      "currentReading": "396.00",
+      "consumptionM3": "12.00"
+    }
+  ]
+}

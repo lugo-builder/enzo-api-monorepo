@@ -1,0 +1,455 @@
+{
+  "residentialComplexId": "<uuid-hydra>",
+  "meters": [
+    {
+      "unitNumber": "1",
+      "meterSerial": "19000193",
+      "initialReading": "49.00"
+    },
+    {
+      "unitNumber": "2",
+      "meterSerial": "19000199",
+      "initialReading": "438.00"
+    },
+    {
+      "unitNumber": "3",
+      "meterSerial": "19006015",
+      "initialReading": "267.00"
+    },
+    {
+      "unitNumber": "4",
+      "meterSerial": "19000198",
+      "initialReading": "563.00"
+    },
+    {
+      "unitNumber": "5",
+      "meterSerial": "19000196",
+      "initialReading": "272.00"
+    },
+    {
+      "unitNumber": "6",
+      "meterSerial": "19000200",
+      "initialReading": "275.00"
+    },
+    {
+      "unitNumber": "7",
+      "meterSerial": "1708233865",
+      "initialReading": "167.00"
+    },
+    {
+      "unitNumber": "8",
+      "meterSerial": "19000195",
+      "initialReading": "419.00"
+    },
+    {
+      "unitNumber": "9",
+      "meterSerial": "290202TB02",
+      "initialReading": "652.00"
+    },
+    {
+      "unitNumber": "10",
+      "meterSerial": "19000197",
+      "initialReading": "294.00"
+    },
+    {
+      "unitNumber": "11",
+      "meterSerial": "315284",
+      "initialReading": "132.00"
+    },
+    {
+      "unitNumber": "12",
+      "meterSerial": "19000194",
+      "initialReading": "233.00"
+    },
+    {
+      "unitNumber": "13",
+      "meterSerial": "19000192",
+      "initialReading": "440.00"
+    },
+    {
+      "unitNumber": "14",
+      "meterSerial": "19000067",
+      "initialReading": "603.00"
+    },
+    {
+      "unitNumber": "15",
+      "meterSerial": "19000101",
+      "initialReading": "751.00"
+    },
+    {
+      "unitNumber": "16",
+      "meterSerial": "1708233866",
+      "initialReading": "220.00"
+    },
+    {
+      "unitNumber": "17",
+      "meterSerial": "19000121",
+      "initialReading": "387.00"
+    },
+    {
+      "unitNumber": "18",
+      "meterSerial": "19000130",
+      "initialReading": "369.00"
+    },
+    {
+      "unitNumber": "19",
+      "meterSerial": "19000245",
+      "initialReading": "279.00"
+    },
+    {
+      "unitNumber": "20",
+      "meterSerial": "19000122",
+      "initialReading": "279.00"
+    },
+    {
+      "unitNumber": "21",
+      "meterSerial": "19000129",
+      "initialReading": "399.00"
+    },
+    {
+      "unitNumber": "22",
+      "meterSerial": "233867",
+      "initialReading": "323.00"
+    },
+    {
+      "unitNumber": "23",
+      "meterSerial": "19000127",
+      "initialReading": "128.00"
+    },
+    {
+      "unitNumber": "24",
+      "meterSerial": "19000125",
+      "initialReading": "391.00"
+    },
+    {
+      "unitNumber": "25",
+      "meterSerial": "19000124",
+      "initialReading": "197.00"
+    },
+    {
+      "unitNumber": "26",
+      "meterSerial": "19000126",
+      "initialReading": "276.00"
+    },
+    {
+      "unitNumber": "27",
+      "meterSerial": "19000128",
+      "initialReading": "882.00"
+    },
+    {
+      "unitNumber": "28",
+      "meterSerial": "19000123",
+      "initialReading": "311.00"
+    },
+    {
+      "unitNumber": "29",
+      "meterSerial": "19000111",
+      "initialReading": "228.00"
+    },
+    {
+      "unitNumber": "30",
+      "meterSerial": "19005899",
+      "initialReading": "136.00"
+    },
+    {
+      "unitNumber": "31",
+      "meterSerial": "19000120",
+      "initialReading": "316.00"
+    },
+    {
+      "unitNumber": "32",
+      "meterSerial": "19000108",
+      "initialReading": "293.00"
+    },
+    {
+      "unitNumber": "33",
+      "meterSerial": "19000112",
+      "initialReading": "204.00"
+    },
+    {
+      "unitNumber": "34",
+      "meterSerial": "19000113",
+      "initialReading": "20.00"
+    },
+    {
+      "unitNumber": "35",
+      "meterSerial": "1708233862",
+      "initialReading": "341.00"
+    },
+    {
+      "unitNumber": "36",
+      "meterSerial": "19000119",
+      "initialReading": "213.00"
+    },
+    {
+      "unitNumber": "37",
+      "meterSerial": "19000118",
+      "initialReading": "321.00"
+    },
+    {
+      "unitNumber": "38",
+      "meterSerial": "19000215",
+      "initialReading": "397.00"
+    },
+    {
+      "unitNumber": "39",
+      "meterSerial": "1708233860",
+      "initialReading": "358.00"
+    },
+    {
+      "unitNumber": "40",
+      "meterSerial": "19000117",
+      "initialReading": "434.00"
+    },
+    {
+      "unitNumber": "41",
+      "meterSerial": "19000115",
+      "initialReading": "534.00"
+    },
+    {
+      "unitNumber": "42",
+      "meterSerial": "19000116",
+      "initialReading": "232.00"
+    },
+    {
+      "unitNumber": "43",
+      "meterSerial": "19000114",
+      "initialReading": "282.00"
+    },
+    {
+      "unitNumber": "44",
+      "meterSerial": "19000216",
+      "initialReading": "260.00"
+    },
+    {
+      "unitNumber": "45",
+      "meterSerial": "19000218",
+      "initialReading": "1035.00"
+    },
+    {
+      "unitNumber": "46",
+      "meterSerial": "19000214",
+      "initialReading": "395.00"
+    },
+    {
+      "unitNumber": "47",
+      "meterSerial": "19000212",
+      "initialReading": "362.00"
+    },
+    {
+      "unitNumber": "48",
+      "meterSerial": "19000217",
+      "initialReading": "758.00"
+    },
+    {
+      "unitNumber": "49",
+      "meterSerial": "19000204",
+      "initialReading": "219.00"
+    },
+    {
+      "unitNumber": "50",
+      "meterSerial": "19000213",
+      "initialReading": "214.00"
+    },
+    {
+      "unitNumber": "51",
+      "meterSerial": "233861",
+      "initialReading": "309.00"
+    },
+    {
+      "unitNumber": "52",
+      "meterSerial": "19000220",
+      "initialReading": "353.00"
+    },
+    {
+      "unitNumber": "53",
+      "meterSerial": "19000211",
+      "initialReading": "371.00"
+    },
+    {
+      "unitNumber": "54",
+      "meterSerial": "19000219",
+      "initialReading": "255.00"
+    },
+    {
+      "unitNumber": "55",
+      "meterSerial": "19000095",
+      "initialReading": "357.00"
+    },
+    {
+      "unitNumber": "56",
+      "meterSerial": "19000183",
+      "initialReading": "11.00"
+    },
+    {
+      "unitNumber": "57",
+      "meterSerial": "19000094",
+      "initialReading": "484.00"
+    },
+    {
+      "unitNumber": "58",
+      "meterSerial": "19000096",
+      "initialReading": "671.00"
+    },
+    {
+      "unitNumber": "59",
+      "meterSerial": "AA0273372",
+      "initialReading": "103.00"
+    },
+    {
+      "unitNumber": "60",
+      "meterSerial": "19000221",
+      "initialReading": "100.00"
+    },
+    {
+      "unitNumber": "61",
+      "meterSerial": "19000097",
+      "initialReading": "455.00"
+    },
+    {
+      "unitNumber": "62",
+      "meterSerial": "19000093",
+      "initialReading": "316.00"
+    },
+    {
+      "unitNumber": "63",
+      "meterSerial": "19000149",
+      "initialReading": "474.00"
+    },
+    {
+      "unitNumber": "64",
+      "meterSerial": "19000099",
+      "initialReading": "422.00"
+    },
+    {
+      "unitNumber": "65",
+      "meterSerial": "19000092",
+      "initialReading": "477.00"
+    },
+    {
+      "unitNumber": "66",
+      "meterSerial": "19000098",
+      "initialReading": "334.00"
+    },
+    {
+      "unitNumber": "67",
+      "meterSerial": "19000091",
+      "initialReading": "552.00"
+    },
+    {
+      "unitNumber": "68",
+      "meterSerial": "210240041",
+      "initialReading": "445.00"
+    },
+    {
+      "unitNumber": "69",
+      "meterSerial": "19000100",
+      "initialReading": "429.00"
+    },
+    {
+      "unitNumber": "70",
+      "meterSerial": "19000230",
+      "initialReading": "729.00"
+    },
+    {
+      "unitNumber": "71",
+      "meterSerial": "19000229",
+      "initialReading": "316.00"
+    },
+    {
+      "unitNumber": "72",
+      "meterSerial": "19000223",
+      "initialReading": "429.00"
+    },
+    {
+      "unitNumber": "73",
+      "meterSerial": "19000104",
+      "initialReading": "372.00"
+    },
+    {
+      "unitNumber": "74",
+      "meterSerial": "1708233864",
+      "initialReading": "351.00"
+    },
+    {
+      "unitNumber": "75",
+      "meterSerial": "AA0273374",
+      "initialReading": "147.00"
+    },
+    {
+      "unitNumber": "76",
+      "meterSerial": "VAC90202TB02",
+      "initialReading": "0.00"
+    },
+    {
+      "unitNumber": "77",
+      "meterSerial": "19000222",
+      "initialReading": "397.00"
+    },
+    {
+      "unitNumber": "78",
+      "meterSerial": "19000228",
+      "initialReading": "402.00"
+    },
+    {
+      "unitNumber": "79",
+      "meterSerial": "VAC19000226",
+      "initialReading": "0.00"
+    },
+    {
+      "unitNumber": "80",
+      "meterSerial": "19000224",
+      "initialReading": "164.00"
+    },
+    {
+      "unitNumber": "81",
+      "meterSerial": "19000227",
+      "initialReading": "313.00"
+    },
+    {
+      "unitNumber": "82",
+      "meterSerial": "19000185",
+      "initialReading": "429.00"
+    },
+    {
+      "unitNumber": "83",
+      "meterSerial": "19000186",
+      "initialReading": "567.00"
+    },
+    {
+      "unitNumber": "84",
+      "meterSerial": "19000184",
+      "initialReading": "482.00"
+    },
+    {
+      "unitNumber": "85",
+      "meterSerial": "19000225",
+      "initialReading": "957.00"
+    },
+    {
+      "unitNumber": "86",
+      "meterSerial": "1708233863",
+      "initialReading": "322.00"
+    },
+    {
+      "unitNumber": "87",
+      "meterSerial": "19000187",
+      "initialReading": "495.00"
+    },
+    {
+      "unitNumber": "88",
+      "meterSerial": "19007827",
+      "initialReading": "186.00"
+    },
+    {
+      "unitNumber": "89",
+      "meterSerial": "16012717",
+      "initialReading": "232.00"
+    },
+    {
+      "unitNumber": "90",
+      "meterSerial": "19000208",
+      "initialReading": "375.00"
+    }
+  ]
+}

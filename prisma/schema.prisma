@@ -9,28 +9,29 @@ datasource db {
 }
 
 /**
- * ####### MODELS #######
+ * ####### CORE MODELS #######
  */
 model User {
-  id                 String    @id @unique @default(uuid())
+  id                 String       @id @unique @default(uuid())
   roleId             String
-  role               Rol       @relation(fields: [roleId], references: [id])
+  role               Rol          @relation(fields: [roleId], references: [id])
   name               String?
-  email              String    @unique
-  emailVerified      Boolean   @default(false)
+  email              String       @unique
+  emailVerified      Boolean      @default(false)
   phone              String?
   passwordRegistered String?
   company            String?
   password           String?
-  status             String    @default("INACTIVE")
-  createdAt          DateTime  @default(now())
+  status             String       @default("INACTIVE")
+  createdAt          DateTime     @default(now())
   createdBy          String?
-  updatedAt          DateTime? @updatedAt
+  updatedAt          DateTime?    @updatedAt
   updatedBy          String?
   deletedAt          DateTime?
   deletedBy          String?
   deactivatedAt      DateTime?
   userDetails        UserDetails?
+
   @@map("user")
 }
 
@@ -92,4 +93,714 @@ model RolPermission {
 enum Currency {
   MXN
   USD
+}
+
+/**
+ * ####### HYDRA / RESIDENTIAL COMPLEX #######
+ */
+
+enum ResidentialUnitStatus {
+  ACTIVE
+  INACTIVE
+  VACANT
+  SUSPENDED
+}
+
+enum UnitResidentRelationshipType {
+  OWNER
+  TENANT
+  FAMILY_MEMBER
+  AUTHORIZED_PERSON
+  OTHER
+}
+
+enum UnitResidentStatus {
+  ACTIVE
+  ENDED
+  INACTIVE
+}
+
+enum WaterMeterStatus {
+  ACTIVE
+  INACTIVE
+  REPLACED
+  DAMAGED
+  MISSING
+}
+
+enum WaterBillingPeriodStatus {
+  DRAFT
+  OPEN
+  CALCULATED
+  CLOSED
+  CANCELLED
+}
+
+enum WaterReadingCalculationMode {
+  ACTUAL
+  ESTIMATED
+  MANUAL
+  METER_REPLACEMENT
+}
+
+enum WaterReadingStatus {
+  DRAFT
+  CAPTURED
+  CALCULATED
+  CANCELLED
+}
+
+enum WaterTariffStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum WaterTariffCalculationType {
+  FIXED_TOTAL
+  PER_M3
+  BASE_PLUS_PER_M3
+  /// Tabla PDF/CEA: precio total por m³ entero (lookup), no tramo progresivo.
+  LOOKUP_BY_M3
+}
+
+enum WaterTariffRoundingMode {
+  HALF_UP
+  HALF_EVEN
+  FLOOR
+  CEIL
+}
+
+enum BillingPeriodStatus {
+  DRAFT
+  GENERATED
+  OPEN
+  CLOSED
+  CANCELLED
+}
+
+enum ChargeCategory {
+  ORDINARY_FEE
+  WATER
+  PENALTY
+  PARKING
+  PAST_DUE
+  EXTRAORDINARY_FEE
+  RESERVE_FUND
+  SURCHARGE
+  DISCOUNT
+  ADJUSTMENT
+  OTHER
+  OPENING_BALANCE
+}
+
+enum ChargeTypeStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum ChargeMovementType {
+  DEBIT
+  CREDIT
+}
+
+enum UnitChargeStatus {
+  DRAFT
+  PENDING
+  PARTIALLY_PAID
+  PAID
+  CANCELLED
+  WAIVED
+}
+
+enum UnitChargeSource {
+  MANUAL
+  WATER_READING
+  RECURRING_FEE
+  PENALTY
+  IMPORT
+  SYSTEM
+}
+
+enum BankTransactionType {
+  CREDIT
+  DEBIT
+}
+
+enum BankTransactionStatus {
+  UNMATCHED
+  SUGGESTED
+  PARTIALLY_APPLIED
+  APPLIED
+  IGNORED
+  DUPLICATE
+  REVERSED
+}
+
+enum BankTransactionSource {
+  MANUAL
+  CSV
+  XLSX
+  BANK_STATEMENT
+  API
+}
+
+enum PaymentMethod {
+  BANK_TRANSFER
+  CASH
+  DEPOSIT
+  CHECK
+  OTHER
+}
+
+enum PaymentStatus {
+  PENDING
+  CONFIRMED
+  PARTIALLY_APPLIED
+  APPLIED
+  CANCELLED
+  REVERSED
+}
+
+enum ImportBatchType {
+  WATER_READINGS
+  WATER_TARIFF
+  WATER_CONSUMPTION_REPORT
+  PAYMENT_REPORT
+  BANK_TRANSACTIONS
+  RESIDENTS
+  OPENING_BALANCES
+  CHARGES
+}
+
+enum ImportBatchStatus {
+  UPLOADED
+  VALIDATING
+  VALIDATED
+  PROCESSING
+  PROCESSED
+  PARTIAL
+  FAILED
+  CANCELLED
+}
+
+model ResidentialComplex {
+  id             String    @id @default(uuid())
+  name           String
+  legalName      String?
+  taxId          String?
+  email          String?
+  phone          String?
+  address        String?   @db.Text
+  currency       Currency  @default(MXN)
+  paymentDueDay  Int       @default(10)
+  totalUnits     Int       @default(0)
+  status         String    @default("ACTIVE")
+  bankName       String?
+  bankAccountMasked String?
+  bankClabeMasked   String?
+  bankBeneficiary   String?
+  createdAt      DateTime  @default(now())
+  createdBy      String?
+  updatedAt      DateTime? @updatedAt
+  updatedBy      String?
+  deletedAt      DateTime?
+  deletedBy      String?
+
+  units                   ResidentialUnit[]
+  waterBillingPeriods     WaterBillingPeriod[]
+  waterTariffs            WaterTariff[]
+  billingPeriods          BillingPeriod[]
+  chargeTypes             ChargeType[]
+  recurringChargeConfigs  RecurringChargeConfig[]
+  bankTransactions        BankTransaction[]
+  importBatches           ImportBatch[]
+
+  @@map("residential_complex")
+}
+
+model ResidentialUnit {
+  id             String                @id @default(uuid())
+  residentialComplexId  String
+  unitNumber     String
+  displayName    String?
+  status         ResidentialUnitStatus @default(ACTIVE)
+  serviceStatus  String?
+  notes          String?               @db.Text
+  createdAt      DateTime              @default(now())
+  createdBy      String?
+  updatedAt      DateTime?             @updatedAt
+  updatedBy      String?
+  deletedAt      DateTime?
+  deletedBy      String?
+
+  residentialComplex              ResidentialComplex               @relation(fields: [residentialComplexId], references: [id])
+  unitResidents            UnitResident[]
+  waterMeters              WaterMeter[]
+  waterReadings            WaterReading[]
+  unitCharges              UnitCharge[]
+  payments                 Payment[]
+  bankTransactionsMatched  BankTransaction[]         @relation("MatchedUnit")
+  accountSnapshots         AccountStatementSnapshot[]
+
+  @@unique([residentialComplexId, unitNumber])
+  @@map("residential_unit")
+}
+
+model Resident {
+  id             String    @id @default(uuid())
+  firstName      String
+  lastName       String?
+  fullName       String
+  email          String?
+  phone          String?
+  secondaryPhone String?
+  status         String    @default("ACTIVE")
+  notes          String?   @db.Text
+  createdAt      DateTime  @default(now())
+  createdBy      String?
+  updatedAt      DateTime? @updatedAt
+  updatedBy      String?
+  deletedAt      DateTime?
+  deletedBy      String?
+
+  unitResidents UnitResident[]
+
+  @@map("resident")
+}
+
+model UnitResident {
+  id                   String                       @id @default(uuid())
+  unitId               String
+  residentId           String
+  relationshipType     UnitResidentRelationshipType @default(OWNER)
+  isPrimary            Boolean                      @default(false)
+  isPaymentResponsible Boolean                      @default(false)
+  startDate            DateTime                     @default(now())
+  endDate              DateTime?
+  status               UnitResidentStatus           @default(ACTIVE)
+  createdAt            DateTime                     @default(now())
+  createdBy            String?
+  updatedAt            DateTime?                    @updatedAt
+  updatedBy            String?
+
+  unit     ResidentialUnit @relation(fields: [unitId], references: [id])
+  resident Resident        @relation(fields: [residentId], references: [id])
+
+  @@index([unitId, status])
+  @@index([residentId])
+  @@map("unit_resident")
+}
+
+model WaterMeter {
+  id               String           @id @default(uuid())
+  unitId           String
+  serialNumber     String
+  installationDate DateTime?
+  removalDate      DateTime?
+  initialReading   Decimal          @default(0) @db.Decimal(14, 4)
+  status           WaterMeterStatus @default(ACTIVE)
+  notes            String?          @db.Text
+  createdAt        DateTime         @default(now())
+  createdBy        String?
+  updatedAt        DateTime?        @updatedAt
+  updatedBy        String?
+  deletedAt        DateTime?
+  deletedBy        String?
+
+  unit          ResidentialUnit @relation(fields: [unitId], references: [id])
+  waterReadings WaterReading[]
+
+  @@index([serialNumber])
+  @@index([unitId, status])
+  @@map("water_meter")
+}
+
+model WaterTariff {
+  id                    String                 @id @default(uuid())
+  residentialComplexId         String
+  name                  String
+  /// Vigencia del JSON CEA (MM-YYYY). Único por complejo; clave de upsert en from-lookup-json.
+  rateTariffDate        String?
+  effectiveFrom         DateTime
+  effectiveTo           DateTime?
+  baseCharge            Decimal                @default(0) @db.Decimal(14, 2)
+  minimumConsumptionM3  Decimal                @default(0) @db.Decimal(14, 4)
+  discountAmount        Decimal                @default(0) @db.Decimal(14, 2)
+  discountPercentage    Decimal                @default(0) @db.Decimal(8, 4)
+  roundingMode          WaterTariffRoundingMode @default(HALF_UP)
+  status                WaterTariffStatus      @default(ACTIVE)
+  notes                 String?                @db.Text
+  createdAt             DateTime               @default(now())
+  createdBy             String?
+  updatedAt             DateTime?              @updatedAt
+  updatedBy             String?
+
+  residentialComplex         ResidentialComplex          @relation(fields: [residentialComplexId], references: [id])
+  tiers               WaterTariffTier[]
+  waterBillingPeriods WaterBillingPeriod[]
+
+  @@unique([residentialComplexId, rateTariffDate], map: "wt_complex_rate_date_key")
+  @@index([residentialComplexId, status])
+  @@map("water_tariff")
+}
+
+model WaterTariffTier {
+  id               String                     @id @default(uuid())
+  tariffId         String
+  /// Clave de lookup: metros cúbicos enteros (0, 1, 2, …). Precio total en fixedAmount.
+  m3               Decimal                    @db.Decimal(14, 4)
+  fixedAmount      Decimal                    @default(0) @db.Decimal(14, 2)
+  amountPerM3      Decimal                    @default(0) @db.Decimal(14, 4)
+  calculationType  WaterTariffCalculationType @default(LOOKUP_BY_M3)
+  sortOrder        Int                        @default(0)
+  createdAt        DateTime                   @default(now())
+  createdBy        String?
+  updatedAt        DateTime?                  @updatedAt
+  updatedBy        String?
+
+  tariff WaterTariff @relation(fields: [tariffId], references: [id])
+
+  @@unique([tariffId, m3], map: "wtt_tariff_m3_key")
+  @@index([tariffId, sortOrder])
+  @@map("water_tariff_tier")
+}
+
+model WaterBillingPeriod {
+  id               String                   @id @default(uuid())
+  residentialComplexId    String
+  name             String
+  readingStartDate DateTime?
+  readingEndDate   DateTime?
+  billingYear      Int
+  billingMonth     Int
+  tariffId         String?
+  status           WaterBillingPeriodStatus @default(DRAFT)
+  notes            String?                  @db.Text
+  /// Costo total del recibo CEA (MXN) para el periodo.
+  ceaBillTotalCost       Decimal? @db.Decimal(14, 2)
+  /// Metros cúbicos del macromedidor reportados en el recibo CEA.
+  macrometerM3FromBill   Decimal? @db.Decimal(14, 4)
+  /// Metros cúbicos totales leídos en el macromedidor físico.
+  physicalMacrometerM3   Decimal? @db.Decimal(14, 4)
+  closedAt         DateTime?
+  closedBy         String?
+  createdAt        DateTime                 @default(now())
+  createdBy        String?
+  updatedAt        DateTime?                @updatedAt
+  updatedBy        String?
+
+  residentialComplex ResidentialComplex    @relation(fields: [residentialComplexId], references: [id])
+  tariff      WaterTariff?   @relation(fields: [tariffId], references: [id])
+  readings    WaterReading[]
+
+  @@unique([residentialComplexId, billingYear, billingMonth], map: "wbp_complex_year_month_key")
+  @@map("water_billing_period")
+}
+
+model WaterReading {
+  id                     String                       @id @default(uuid())
+  billingPeriodId        String
+  unitId                 String
+  waterMeterId           String?
+  previousReading        Decimal                      @default(0) @db.Decimal(14, 4)
+  currentReading         Decimal                      @default(0) @db.Decimal(14, 4)
+  consumptionM3          Decimal                      @default(0) @db.Decimal(14, 4)
+  /// Diferencia del macromedidor en MXN (no en m³); se suma al total de la vivienda.
+  macroDifferencePrice   Decimal                      @default(0) @db.Decimal(14, 2)
+  adjustedConsumptionM3  Decimal                      @default(0) @db.Decimal(14, 4)
+  baseAmount             Decimal                      @default(0) @db.Decimal(14, 2)
+  calculatedAmount       Decimal                      @default(0) @db.Decimal(14, 2)
+  /// Cargo fijo por servicio de lectura (p. ej. $40.00 del JSON priceService).
+  serviceFeeAmount       Decimal                      @default(0) @db.Decimal(14, 2)
+  manualAdjustment       Decimal                      @default(0) @db.Decimal(14, 2)
+  finalAmount            Decimal                      @default(0) @db.Decimal(14, 2)
+  isDelinquent           Boolean                      @default(false)
+  reserveFundAmount      Decimal                      @default(0) @db.Decimal(14, 2)
+  calculationMode        WaterReadingCalculationMode  @default(ACTUAL)
+  notes                  String?                      @db.Text
+  status                 WaterReadingStatus           @default(DRAFT)
+  createdAt              DateTime                     @default(now())
+  createdBy              String?
+  updatedAt              DateTime?                    @updatedAt
+  updatedBy              String?
+
+  billingPeriod WaterBillingPeriod @relation(fields: [billingPeriodId], references: [id])
+  unit          ResidentialUnit    @relation(fields: [unitId], references: [id])
+  waterMeter    WaterMeter?        @relation(fields: [waterMeterId], references: [id])
+  unitCharges   UnitCharge[]
+
+  @@unique([billingPeriodId, unitId])
+  @@map("water_reading")
+}
+
+model BillingPeriod {
+  id            String              @id @default(uuid())
+  residentialComplexId String
+  year          Int
+  month         Int
+  name          String
+  dueDate       DateTime?
+  status        BillingPeriodStatus @default(DRAFT)
+  generatedAt   DateTime?
+  closedAt      DateTime?
+  notes         String?             @db.Text
+  createdAt     DateTime            @default(now())
+  createdBy     String?
+  updatedAt     DateTime?           @updatedAt
+  updatedBy     String?
+
+  residentialComplex ResidentialComplex                 @relation(fields: [residentialComplexId], references: [id])
+  unitCharges UnitCharge[]
+  snapshots   AccountStatementSnapshot[]
+
+  @@unique([residentialComplexId, year, month])
+  @@map("billing_period")
+}
+
+model ChargeType {
+  id             String           @id @default(uuid())
+  residentialComplexId  String
+  code           String
+  name           String
+  category       ChargeCategory
+  defaultAmount  Decimal?         @db.Decimal(14, 2)
+  isRecurring    Boolean          @default(false)
+  isSystem       Boolean          @default(false)
+  affectsBalance Boolean          @default(true)
+  status         ChargeTypeStatus @default(ACTIVE)
+  createdAt      DateTime         @default(now())
+  createdBy      String?
+  updatedAt      DateTime?        @updatedAt
+  updatedBy      String?
+
+  residentialComplex           ResidentialComplex            @relation(fields: [residentialComplexId], references: [id])
+  unitCharges           UnitCharge[]
+  recurringChargeConfigs RecurringChargeConfig[]
+
+  @@unique([residentialComplexId, code])
+  @@map("charge_type")
+}
+
+/**
+ * Concepto recurrente versionado (ej. cuota ordinaria).
+ * El monto vigente se resuelve por effectiveFrom/effectiveTo; no hardcodear en servicios.
+ */
+model RecurringChargeConfig {
+  id            String    @id @default(uuid())
+  residentialComplexId String
+  chargeTypeId  String
+  amount        Decimal   @db.Decimal(14, 2)
+  currency      Currency  @default(MXN)
+  effectiveFrom DateTime
+  effectiveTo   DateTime?
+  status        String    @default("ACTIVE")
+  notes         String?   @db.Text
+  createdAt     DateTime  @default(now())
+  createdBy     String?
+  updatedAt     DateTime? @updatedAt
+  updatedBy     String?
+
+  residentialComplex ResidentialComplex @relation(fields: [residentialComplexId], references: [id])
+  chargeType  ChargeType  @relation(fields: [chargeTypeId], references: [id])
+
+  @@index([residentialComplexId, chargeTypeId, status], map: "rcc_complex_type_status_idx")
+  @@index([effectiveFrom, effectiveTo])
+  @@map("recurring_charge_config")
+}
+
+model UnitCharge {
+  id                 String             @id @default(uuid())
+  unitId             String
+  billingPeriodId    String?
+  chargeTypeId       String
+  waterReadingId     String?
+  description        String?
+  amount             Decimal            @db.Decimal(14, 2)
+  currency           Currency           @default(MXN)
+  movementType       ChargeMovementType @default(DEBIT)
+  chargeDate         DateTime           @default(now())
+  dueDate            DateTime?
+  status             UnitChargeStatus   @default(PENDING)
+  source             UnitChargeSource   @default(MANUAL)
+  externalReference  String?
+  notes              String?            @db.Text
+  createdAt          DateTime           @default(now())
+  createdBy          String?
+  updatedAt          DateTime?          @updatedAt
+  updatedBy          String?
+  cancelledAt        DateTime?
+  cancelledBy        String?
+  cancellationReason String?            @db.Text
+
+  unit             ResidentialUnit      @relation(fields: [unitId], references: [id])
+  billingPeriod    BillingPeriod?       @relation(fields: [billingPeriodId], references: [id])
+  chargeType       ChargeType           @relation(fields: [chargeTypeId], references: [id])
+  waterReading     WaterReading?        @relation(fields: [waterReadingId], references: [id])
+  paymentApplications PaymentApplication[]
+
+  @@unique([waterReadingId])
+  @@index([unitId, status])
+  @@index([billingPeriodId])
+  @@index([externalReference])
+  @@map("unit_charge")
+}
+
+model ImportBatch {
+  id                   String            @id @default(uuid())
+  residentialComplexId String
+  type                 ImportBatchType
+  filename             String?
+  checksum             String?
+  status               ImportBatchStatus @default(UPLOADED)
+  totalRows            Int               @default(0)
+  validRows            Int               @default(0)
+  invalidRows          Int               @default(0)
+  processedRows        Int               @default(0)
+  /// Documento JSON original completo (lecturas, tarifario, reporte, etc.).
+  payload              Json?
+  errorReport          Json?
+  /// Vista previa / filas normalizadas (compatibilidad con imports XLSX).
+  previewData          Json?
+  /// Entidad canónica relacionada (WaterBillingPeriod, WaterTariff, etc.).
+  relatedEntityType    String?
+  relatedEntityId      String?
+  createdAt            DateTime          @default(now())
+  createdBy            String?
+  updatedAt            DateTime?         @updatedAt
+  updatedBy            String?
+  processedAt          DateTime?
+
+  residentialComplex ResidentialComplex @relation(fields: [residentialComplexId], references: [id])
+  bankTransactions   BankTransaction[]
+
+  @@index([residentialComplexId, type])
+  @@index([relatedEntityType, relatedEntityId])
+  @@map("import_batch")
+}
+
+model BankTransaction {
+  id                  String                @id @default(uuid())
+  residentialComplexId       String
+  transactionDate     DateTime
+  postingDate         DateTime?
+  amount              Decimal               @db.Decimal(14, 2)
+  currency            Currency              @default(MXN)
+  transactionType     BankTransactionType   @default(CREDIT)
+  bankReference       String?
+  concept             String?
+  senderName          String?
+  senderAccountMasked String?
+  rawDescription      String?               @db.Text
+  source              BankTransactionSource @default(MANUAL)
+  importBatchId       String?
+  sourceHash          String?
+  status              BankTransactionStatus @default(UNMATCHED)
+  matchedUnitId       String?
+  notes               String?               @db.Text
+  createdAt           DateTime              @default(now())
+  createdBy           String?
+  updatedAt           DateTime?             @updatedAt
+  updatedBy           String?
+
+  residentialComplex ResidentialComplex      @relation(fields: [residentialComplexId], references: [id])
+  importBatch ImportBatch?     @relation(fields: [importBatchId], references: [id])
+  matchedUnit ResidentialUnit? @relation("MatchedUnit", fields: [matchedUnitId], references: [id])
+  payments    Payment[]
+
+  @@index([residentialComplexId, status])
+  @@index([sourceHash])
+  @@index([bankReference])
+  @@map("bank_transaction")
+}
+
+model Payment {
+  id                 String        @id @default(uuid())
+  unitId             String
+  bankTransactionId  String?
+  paymentDate        DateTime      @default(now())
+  amount             Decimal       @db.Decimal(14, 2)
+  currency           Currency      @default(MXN)
+  paymentMethod      PaymentMethod @default(BANK_TRANSFER)
+  reference          String?
+  status             PaymentStatus @default(PENDING)
+  unappliedAmount    Decimal       @db.Decimal(14, 2)
+  notes              String?       @db.Text
+  createdAt          DateTime      @default(now())
+  createdBy          String?
+  updatedAt          DateTime?     @updatedAt
+  updatedBy          String?
+  cancelledAt        DateTime?
+  cancelledBy        String?
+  cancellationReason String?       @db.Text
+
+  unit                ResidentialUnit      @relation(fields: [unitId], references: [id])
+  bankTransaction     BankTransaction?     @relation(fields: [bankTransactionId], references: [id])
+  paymentApplications PaymentApplication[]
+
+  @@index([unitId, status])
+  @@index([bankTransactionId])
+  @@map("payment")
+}
+
+model PaymentApplication {
+  id             String    @id @default(uuid())
+  paymentId      String
+  unitChargeId   String
+  amount         Decimal   @db.Decimal(14, 2)
+  appliedAt      DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+  createdBy      String?
+  updatedAt      DateTime? @updatedAt
+  updatedBy      String?
+  reversedAt     DateTime?
+  reversedBy     String?
+  reversalReason String?   @db.Text
+
+  payment    Payment    @relation(fields: [paymentId], references: [id])
+  unitCharge UnitCharge @relation(fields: [unitChargeId], references: [id])
+
+  @@unique([paymentId, unitChargeId])
+  @@map("payment_application")
+}
+
+model AccountStatementSnapshot {
+  id             String   @id @default(uuid())
+  unitId         String
+  billingPeriodId String
+  openingBalance Decimal  @db.Decimal(14, 2)
+  periodCharges  Decimal  @db.Decimal(14, 2)
+  periodCredits  Decimal  @db.Decimal(14, 2)
+  periodPayments Decimal  @db.Decimal(14, 2)
+  closingBalance Decimal  @db.Decimal(14, 2)
+  generatedAt    DateTime @default(now())
+  generatedBy    String?
+  dataHash       String?
+  createdAt      DateTime @default(now())
+  createdBy      String?
+  updatedAt      DateTime? @updatedAt
+  updatedBy      String?
+
+  unit          ResidentialUnit @relation(fields: [unitId], references: [id])
+  billingPeriod BillingPeriod   @relation(fields: [billingPeriodId], references: [id])
+
+  @@unique([unitId, billingPeriodId])
+  @@map("account_statement_snapshot")
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  userId       String?
+  entityType   String
+  entityId     String
+  action       String
+  previousData Json?
+  newData      Json?
+  metadata     Json?
+  createdAt    DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("audit_log")
 }
